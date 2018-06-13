@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Higgles Abound Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-06-13T23:05:00+02:00</updated><entry><title>First Post</title><link href="/first-post.html" rel="alternate"></link><published>2018-06-13T23:05:00+02:00</published><updated>2018-06-12T23:06:00+02:00</updated><author><name>Vincent Alexander Croft</name></author><id>tag:None,2018-06-13:/first-post.html</id><summary type="html">&lt;h1&gt;First Post&lt;/h1&gt;
+&lt;p&gt;Well the first post using github pages several small attempts were already made using CERN appache serves but quickly abandoned.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="A bear quark" src="/images/giphy.gif"&gt;&lt;/p&gt;</summary><content type="html">&lt;h1&gt;First Post&lt;/h1&gt;
+&lt;p&gt;Well the first post using github pages several small attempts were already made using CERN appache serves but quickly abandoned.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="A bear quark" src="/images/giphy.gif"&gt;&lt;/p&gt;</content><category term="pelican"></category><category term="publishing"></category></entry></feed>
