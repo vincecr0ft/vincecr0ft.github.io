@@ -3,7 +3,8 @@
 from __future__ import unicode_literals
 
 PLUGIN_PATHS = ['/Users/vince/pelican-plugins/']
-PLUGINS = ["render_math"]
+PLUGINS = ["render_math","pelican_comment_system"]
+PELICAN_COMMENT_SYSTEM = True
 
 AUTHOR = u'Vincent Alexander Croft'
 SITENAME = u'Higgles Abound Blog'
