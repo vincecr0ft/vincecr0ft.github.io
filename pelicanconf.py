@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+PLUGIN_PATHS = ['/Users/vince/pelican-plugins/']
+PLUGINS = ["render_math"]
 
 AUTHOR = u'Vincent Alexander Croft'
 SITENAME = u'Higgles Abound Blog'

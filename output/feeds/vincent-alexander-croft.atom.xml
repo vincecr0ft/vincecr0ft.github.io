@@ -1,5 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Higgles Abound Blog - Vincent Alexander Croft</title><link href="/" rel="alternate"></link><link href="/feeds/vincent-alexander-croft.atom.xml" rel="self"></link><id>/</id><updated>2018-06-13T23:05:00+02:00</updated><entry><title>First Post</title><link href="/first-post.html" rel="alternate"></link><published>2018-06-13T23:05:00+02:00</published><updated>2018-06-12T23:06:00+02:00</updated><author><name>Vincent Alexander Croft</name></author><id>tag:None,2018-06-13:/first-post.html</id><summary type="html">&lt;h1&gt;First Post&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Higgles Abound Blog - Vincent Alexander Croft</title><link href="/" rel="alternate"></link><link href="/feeds/vincent-alexander-croft.atom.xml" rel="self"></link><id>/</id><updated>2018-06-16T14:04:00+02:00</updated><entry><title>High Energy Statistics</title><link href="/high-energy-statistics.html" rel="alternate"></link><published>2018-06-16T14:04:00+02:00</published><updated>2018-06-16T14:04:00+02:00</updated><author><name>Vincent Alexander Croft</name></author><id>tag:None,2018-06-16:/high-energy-statistics.html</id><summary type="html">&lt;h1&gt;High Energy Statistics&lt;/h1&gt;
+&lt;p&gt;Before I begin apparently this word has become a piece of high energy physics jargon. However its usage has become so ingrained in everything I do. High statistics = lots of events, low statistics = not many data points. It has got to the point where I am not …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;High Energy Statistics&lt;/h1&gt;
+&lt;p&gt;Before I begin apparently this word has become a piece of high energy physics jargon. However its usage has become so ingrained in everything I do. High statistics = lots of events, low statistics = not many data points. It has got to the point where I am not even sure that this is not common usage of the term. But there it is. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://royalsociety.org/science-events-and-lectures/2017/11/how-do-plants-grow/"&gt;&lt;img alt="How plants grow by Dr Rucha Karnik" src="/images/how-plants-grow.jpg"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Several months ago I listened to a RI discussion on some issue in botany as a podcast whilst out running. A member of the audience asked an uneducated question to which I found myself rattling off a standard particle physics response. The subject matter was of a statistical nature. In science &lt;span class="math"&gt;\(X\)&lt;/span&gt; rarely happens because of &lt;span class="math"&gt;\(Y\)&lt;/span&gt;, instead we have evidence for &lt;span class="math"&gt;\(X\)&lt;/span&gt; in some sample &lt;span class="math"&gt;\(Y\)&lt;/span&gt;. It prompted a long think of the similarities between particle physics and botany. &lt;/p&gt;
+&lt;h2&gt;The First Modern Statistician.&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Ronald_Fisher"&gt;&lt;img alt="R.A.Fisher" src="/images/Fisher.jpg"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After a brief stint teaching, Ronald Aylmer Fisher turned down Karl Pearson, the worlds foremost expert on statistical theory, and a position at University College London, to instead move to work for at the Rothamsted Experimental Station. Here he could look at a wealth of agricultural data that had been accumulated over 80 years. It was during his time here that he developed what became the foundations of modern statistical theory, in the invention of the analysis of variance (ANOVA), error functions of statistics and popularised modern usage of Maximum Likelihood Methods and p-values.&lt;/p&gt;
+&lt;h3&gt;But why plants?&lt;/h3&gt;
+&lt;p&gt;Randomness, is a part of nature. Randomness is just as crucial to evolutionary biology as sunlight or nutrients. Thus on trying to analyse why crops behaved this way or that, Fisher had to master randomness itself in order to arrive at the truth. &lt;/p&gt;
+&lt;p&gt;The wealth of data at Rothamsted allowed Fisher to forever change the way we assess the outcome of experiments. When randomness is involved high statistics is the only way to extract the truth&lt;/p&gt;
+&lt;h3&gt;Scaling up to Particles&lt;/h3&gt;
+&lt;p&gt;Particle physics has randomness built in. Randomness that Einstein famously rejected saying 'God does not play dice!' quantum weirdness is weird because probability plays a leading roll in in describing how particles live and die. Each of the primary experiments at the LHC produces more data the entire 80 year Rothamstead archive every single second. As such every analyst is trained to see the quantity of data received as statistics. The Higgs boson isn't a lump of rock that we poke with sticks and write down how it wiggles. The plots and distributions are literally manifestations of how the Higgs looks and behaves.&lt;br&gt;
+&lt;img alt="It's a Higgle!" src="/images/HiggsWW.gif"&gt;&lt;/p&gt;
+&lt;h2&gt;Bigger Stats = Bigger Data&lt;/h2&gt;
+&lt;p&gt;Hence the need for the world wide web and now the grid. Why physics departments around the world are investing billions into high energy physics oriented data centres. Just like the randomness in biology that sparked a revolution in evolutionary genetics, quantum weirdness in particle physics is pushing for faster analyses, of denser information, of quantities of data never before seen on experimental scales. Our models can involve hundreds or even tens of thousands of parameters, and the billions of measurements split over several measurements and statistics is at the heart of it all. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/dMwP7nEuDGA"&gt;&lt;img alt="Cern Data Centre" src="/images/datacentre.jpg"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="statistics"></category><category term="computing"></category><category term="history"></category></entry><entry><title>First Post</title><link href="/first-post.html" rel="alternate"></link><published>2018-06-13T23:05:00+02:00</published><updated>2018-06-12T23:06:00+02:00</updated><author><name>Vincent Alexander Croft</name></author><id>tag:None,2018-06-13:/first-post.html</id><summary type="html">&lt;h1&gt;First Post&lt;/h1&gt;
 &lt;p&gt;Well the first post using github pages several small attempts were already made using CERN appache serves but quickly abandoned.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="A bear quark" src="/images/giphy.gif"&gt;&lt;/p&gt;</summary><content type="html">&lt;h1&gt;First Post&lt;/h1&gt;
 &lt;p&gt;Well the first post using github pages several small attempts were already made using CERN appache serves but quickly abandoned.&lt;/p&gt;
