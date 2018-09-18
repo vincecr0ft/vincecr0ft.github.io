@@ -70,8 +70,4 @@
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="statistics"></category><category term="computing"></category><category term="history"></category></entry><entry><title>First Post</title><link href="/first-post.html" rel="alternate"></link><published>2018-06-13T23:05:00+02:00</published><updated>2018-06-12T23:06:00+02:00</updated><author><name>Vincent Alexander Croft</name></author><id>tag:None,2018-06-13:/first-post.html</id><summary type="html">&lt;h1&gt;First Post&lt;/h1&gt;
-&lt;p&gt;Well the first post using github pages several small attempts were already made using CERN appache serves but quickly abandoned.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="A bear quark" src="/images/giphy.gif"&gt;&lt;/p&gt;</summary><content type="html">&lt;h1&gt;First Post&lt;/h1&gt;
-&lt;p&gt;Well the first post using github pages several small attempts were already made using CERN appache serves but quickly abandoned.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="A bear quark" src="/images/giphy.gif"&gt;&lt;/p&gt;</content><category term="pelican"></category><category term="publishing"></category></entry></feed>
+&lt;/script&gt;</content><category term="statistics"></category><category term="computing"></category><category term="history"></category></entry></feed>
