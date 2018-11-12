@@ -7,7 +7,7 @@
 body {
   font-family: 'Open Sans', 'Lora','Times New Roman',serif;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 300;
   color: #404040;
 }
 
@@ -28,11 +28,11 @@ h6 {
   font-weight: 800;
 }
 a {
-  color: #0085a1;
+  color: #404040;
 }
 a:hover,
 a:focus {
-  color: #0057a2;
+  color: #0085a1;
 }
 a img:hover,
 a img:focus {
@@ -44,7 +44,6 @@ blockquote {
 }
 pre {
   background-color: transparent;
-  font-size: 16px;
 }
 hr.small {
   max-width: 100px;
@@ -388,11 +387,6 @@ form .row:first-child .floating-label-form-group {
   text-shadow: none;
   background: #0085a1;
 }
-img {
-  max-width: 100%;
-  height: auto;
-  width: auto\9; /* ie8 */
-}
 img::selection {
   color: white;
   background: transparent;
@@ -403,8 +397,4 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #0085a1;
-}
-.article-summary {
-  padding-top:10px;
-  padding-bottom: 10px;
 }
