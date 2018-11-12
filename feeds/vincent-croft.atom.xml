@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Higgles Abound Blog - Vincent Croft</title><link href="/" rel="alternate"></link><link href="/feeds/vincent-croft.atom.xml" rel="self"></link><id>/</id><updated>2018-11-11T00:26:00+01:00</updated><entry><title>Adventures in Torch and Deep Art</title><link href="/TorchDeepArt.html" rel="alternate"></link><published>2018-11-11T00:26:00+01:00</published><updated>2018-11-11T00:26:00+01:00</updated><author><name>Vincent Croft</name></author><id>tag:None,2018-11-11:/TorchDeepArt.html</id><summary type="html">&lt;p&gt;I setup torch with OpenCL to use the GPU on my laptop to make pretty pictures. Then I scaled the problem up on Google Cloed Conmpute Engine.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Adventures in Torch   and Deep Art&lt;/h1&gt;
+&lt;p&gt;Recently I made a hanging canvas made for my Mother in law based on the idea of deep style transfer.&lt;/p&gt;
+&lt;p&gt;After several attempts with various implemetations of the code I settled on torch implementation of the paper &lt;a href="http://arxiv.org/abs/1508.06576"&gt;A Neural Algorithm of Artistic Style&lt;/a&gt; by Leon A. Gatys, Alexander S. Ecker, and Matthias Bethge as implemented by &lt;a href="https://github.com/jcjohnson"&gt;Justin Johnson&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;For the last 2 years I've been lugging around my 15inch macbook pro - 4 times the weight and twice the price of a mac that would accomodate most of my needs... but this one has a dedicated GPU! ...but... that GPU is an intel Radeon Pro 450 and therefore not CUDA compatible and therefore not useful for machine learning.&lt;/p&gt;
+&lt;p&gt;Torch is a lua front end to the TH tensor processing library and a predecessor to pytorch. Unlike pytorch however, Torch supports OpenCL execution and thereby makes my computer useful again! This allowed me to directly observe what all this fuss about GPU programming is about... about a 50 times speed upgrade! &lt;/p&gt;
+&lt;p&gt;But even this new found magical power had its limitations. The image being manipulatied cannot be larger than 1024x1024 or else the GPU runs out of memory.&lt;/p&gt;
+&lt;p&gt;Enter the power of the cloud. Setting up torch on GCP was not as straight forward as id like but given that I did it 16 times in an afternoon I think it cant have been that bad.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/vincecr0ft/vincecr0ft.github.io/source/content/images/montbug.png" height="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Want to give it a try?&lt;/p&gt;
+&lt;h2&gt;Torch + CUDA on Google Cloud Platform&lt;/h2&gt;
+&lt;p&gt;I launched the session As I was taught during my tesor flow certification. I navigatied to &lt;a href="https://console.cloud.google.com"&gt;the Google Cloud Console&lt;/a&gt; and started a ubuntu instance. Living in europe I found the only site to reliably provide me with GPU instances was the Belgian host at &lt;code&gt;europe-west1-b&lt;/code&gt; first I ran out of swap space when trying to install &lt;a href="https://developer.nvidia.com/cudnn"&gt;&lt;code&gt;cudnn&lt;/code&gt;&lt;/a&gt; and had to boot up a new instance. I had numerous problems when trying to use a dedicated deeplearning image (pytorch or tensorflow) so I stuck to plain ubuntu 16.04 with a couple of CPUs and at least 4 GPUs (I also tried with just one but ran into the same memory issues as when running locally):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gcloud compute --project &lt;span class="s1"&gt;&amp;#39;your-project-name&amp;#39;&lt;/span&gt; ssh --zone &lt;span class="s1"&gt;&amp;#39;your-zone&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;your-instance-name&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;once in the instance i followed steps to install CUDA:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+$ sudo dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+$ sudo apt-get update
+$ rm cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+$ sudo apt-get install cuda-8-0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then installed torch7 - hopefully picking up the CUDA install:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/torch/distro.git ~/torch --recursive
+
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/torch&lt;span class="p"&gt;;&lt;/span&gt; bash install-deps&lt;span class="p"&gt;;&lt;/span&gt;
+
+$ ./install.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;this can take a while - especially if your CUDA istallation succeeded. I did have some minor issues with OpenBlas but nothing a quck google and some Ubuntu-fu can't fix.&lt;/p&gt;
+&lt;p&gt;Finally (before checking out the main repo) we need loadcaffe to load a pretrained model from the Caffe Model Zoo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install libprotobuf-dev protobuf-compiler
+$ sudo ~/torch/install/bin/luarocks install loadcaffe
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now its time for the actual code!&lt;/p&gt;
+&lt;h2&gt;Neural Style&lt;/h2&gt;
+&lt;p&gt;the readme for this code is great and the examples folder is great. Just check it out and run it!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/jcjohnson/neural-style.git
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; neural_style&lt;span class="p"&gt;;&lt;/span&gt; sh models/download_models.sh&lt;span class="p"&gt;;&lt;/span&gt;
+$ th neural_style.lua -style_image &amp;lt;image.jpg&amp;gt; -content_image &amp;lt;image.jpg&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;but wait! that last step needs local images! how do I get them onto the GCP instance? &lt;a href="https://cloud.google.com/sdk/"&gt;Cloud SDK&lt;/a&gt;. &lt;em&gt;LOCALLY&lt;/em&gt; download the code for your system and run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./google-cloud-sdk/install.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Restart your terminal&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gcloud init
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and log in! Now we can do an scp:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gcloud compute scp /folder-to-your-file-locally/image.jpg instance-name:/tmp/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;whist there are lots of fun tutorials out there, and playing around with all the possible inputs and styles is crazy addictive, I found the &lt;a href="https://github.com/jcjohnson/neural-style/blob/master/examples/multigpu_scripts/starry_stanford.sh"&gt;starry_stanford.sh&lt;/a&gt; script gave the best results but needs some mighty powerful GPUs or to step down to CPU only mode in the end.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/vincecr0ft/vincecr0ft.github.io/source/content/images/montbug.png" height="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Oh and I think Im still on the GCP free/trial tier so it still says that I have 0 estimated costs.&lt;/p&gt;</content><category term="GPU"></category><category term="Torch"></category><category term="Photography"></category><category term="Deep Learning"></category></entry></feed>

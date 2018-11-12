@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Higgles Abound Blog</title>
+
+            <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Higgles Abound Blog Full Atom Feed" />
+            <link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Higgles Abound Blog Full RSS Feed" />
+            <link href="/feeds/deep-learning.atom.xml" type="application/atom+xml" rel="alternate" title="Higgles Abound Blog Categories Atom Feed" />
+
+        <!-- Bootstrap Core CSS -->
+        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+
+        <meta name="tags" contents="GPU" />
+        <meta name="tags" contents="Torch" />
+        <meta name="tags" contents="Photography" />
+        <meta name="tags" contents="Deep Learning" />
+
+
+			<meta property="og:locale" content="en">
+		<meta property="og:site_name" content="Higgles Abound Blog">
+
+	<meta property="og:type" content="article">
+	<meta property="article:author" content="">
+	<meta property="og:url" content="/TorchDeepArt.html">
+	<meta property="og:title" content="Adventures in Torch  and Deep Art">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="/">
+	<meta property="article:published_time" content="2018-11-11 00:26:00+01:00">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Higgles Abound Blog</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="http://vincentcroft.web.cern.ch/">TO THE TOP</a></li>
+                        <li><a href="http://vincentcroft.web.cern.ch/vincentcroft/#Research">RESEARCH</a></li>
+                        <li><a href="http://vincentcroft.web.cern.ch/vincentcroft/#Teaching">TEACHING</a></li>
+                        <li><a href="http://vincentcroft.web.cern.ch/vincentcroft/#Personal">PERSONAL</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Adventures in Torch  and Deep Art</h1>
+                        <span class="meta">Posted by
+                                <a href="/author/vincent-croft.html">Vincent Croft</a>
+                             on Sun 11 November 2018
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <h1>Adventures in Torch   and Deep Art</h1>
+<p>Recently I made a hanging canvas made for my Mother in law based on the idea of deep style transfer.</p>
+<p>After several attempts with various implemetations of the code I settled on torch implementation of the paper <a href="http://arxiv.org/abs/1508.06576">A Neural Algorithm of Artistic Style</a> by Leon A. Gatys, Alexander S. Ecker, and Matthias Bethge as implemented by <a href="https://github.com/jcjohnson">Justin Johnson</a>. </p>
+<p>For the last 2 years I've been lugging around my 15inch macbook pro - 4 times the weight and twice the price of a mac that would accomodate most of my needs... but this one has a dedicated GPU! ...but... that GPU is an intel Radeon Pro 450 and therefore not CUDA compatible and therefore not useful for machine learning.</p>
+<p>Torch is a lua front end to the TH tensor processing library and a predecessor to pytorch. Unlike pytorch however, Torch supports OpenCL execution and thereby makes my computer useful again! This allowed me to directly observe what all this fuss about GPU programming is about... about a 50 times speed upgrade! </p>
+<p>But even this new found magical power had its limitations. The image being manipulatied cannot be larger than 1024x1024 or else the GPU runs out of memory.</p>
+<p>Enter the power of the cloud. Setting up torch on GCP was not as straight forward as id like but given that I did it 16 times in an afternoon I think it cant have been that bad.</p>
+<p><img src="https://raw.githubusercontent.com/vincecr0ft/vincecr0ft.github.io/source/content/images/montbug.png" height="400px"></p>
+<p>Want to give it a try?</p>
+<h2>Torch + CUDA on Google Cloud Platform</h2>
+<p>I launched the session As I was taught during my tesor flow certification. I navigatied to <a href="https://console.cloud.google.com">the Google Cloud Console</a> and started a ubuntu instance. Living in europe I found the only site to reliably provide me with GPU instances was the Belgian host at <code>europe-west1-b</code> first I ran out of swap space when trying to install <a href="https://developer.nvidia.com/cudnn"><code>cudnn</code></a> and had to boot up a new instance. I had numerous problems when trying to use a dedicated deeplearning image (pytorch or tensorflow) so I stuck to plain ubuntu 16.04 with a couple of CPUs and at least 4 GPUs (I also tried with just one but ran into the same memory issues as when running locally):</p>
+<div class="highlight"><pre><span></span>$ gcloud compute --project <span class="s1">&#39;your-project-name&#39;</span> ssh --zone <span class="s1">&#39;your-zone&#39;</span> <span class="s1">&#39;your-instance-name&#39;</span>
+</pre></div>
+
+
+<p>once in the instance i followed steps to install CUDA:</p>
+<div class="highlight"><pre><span></span>$ curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+$ sudo dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+$ sudo apt-get update
+$ rm cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+$ sudo apt-get install cuda-8-0
+</pre></div>
+
+
+<p>Then installed torch7 - hopefully picking up the CUDA install:</p>
+<div class="highlight"><pre><span></span>$ git clone https://github.com/torch/distro.git ~/torch --recursive
+
+$ <span class="nb">cd</span> ~/torch<span class="p">;</span> bash install-deps<span class="p">;</span>
+
+$ ./install.sh
+</pre></div>
+
+
+<p>this can take a while - especially if your CUDA istallation succeeded. I did have some minor issues with OpenBlas but nothing a quck google and some Ubuntu-fu can't fix.</p>
+<p>Finally (before checking out the main repo) we need loadcaffe to load a pretrained model from the Caffe Model Zoo:</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get install libprotobuf-dev protobuf-compiler
+$ sudo ~/torch/install/bin/luarocks install loadcaffe
+</pre></div>
+
+
+<p>Now its time for the actual code!</p>
+<h2>Neural Style</h2>
+<p>the readme for this code is great and the examples folder is great. Just check it out and run it!</p>
+<div class="highlight"><pre><span></span>$ git clone https://github.com/jcjohnson/neural-style.git
+$ <span class="nb">cd</span> neural_style<span class="p">;</span> sh models/download_models.sh<span class="p">;</span>
+$ th neural_style.lua -style_image &lt;image.jpg&gt; -content_image &lt;image.jpg&gt;
+</pre></div>
+
+
+<p>but wait! that last step needs local images! how do I get them onto the GCP instance? <a href="https://cloud.google.com/sdk/">Cloud SDK</a>. <em>LOCALLY</em> download the code for your system and run:</p>
+<div class="highlight"><pre><span></span>$ ./google-cloud-sdk/install.sh
+</pre></div>
+
+
+<p>Restart your terminal</p>
+<div class="highlight"><pre><span></span>$ gcloud init
+</pre></div>
+
+
+<p>and log in! Now we can do an scp:</p>
+<div class="highlight"><pre><span></span>$ gcloud compute scp /folder-to-your-file-locally/image.jpg instance-name:/tmp/
+</pre></div>
+
+
+<p>whist there are lots of fun tutorials out there, and playing around with all the possible inputs and styles is crazy addictive, I found the <a href="https://github.com/jcjohnson/neural-style/blob/master/examples/multigpu_scripts/starry_stanford.sh">starry_stanford.sh</a> script gave the best results but needs some mighty powerful GPUs or to step down to CPU only mode in the end.</p>
+<p><img src="https://raw.githubusercontent.com/vincecr0ft/vincecr0ft.github.io/source/content/images/montbug.png" height="400px"></p>
+<p>Oh and I think Im still on the GCP free/trial tier so it still says that I have 0 estimated costs.</p>
+    </article>
+
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Blog powered by <a href="http://getpelican.com">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
