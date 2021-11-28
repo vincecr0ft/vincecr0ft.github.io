@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-from pelican_jupyter import markupy as nb_markup
+from pelican_jupyter import markup as nb_markup
 MARKUP = ("md", "ipynb")
 PLUGIN_PATHS = ['/Users/vince/pelican-plugins/']
 PLUGINS = ["render_math","pelican_comment_system",nb_markup]
