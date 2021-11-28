@@ -2,8 +2,12 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+from pelican_jupyter import markupy as nb_markup
+MARKUP = ("md", "ipynb")
 PLUGIN_PATHS = ['/Users/vince/pelican-plugins/']
-PLUGINS = ["render_math","pelican_comment_system"]
+PLUGINS = ["render_math","pelican_comment_system",nb_markup]
+IPYNB_MARKUP_USE_FIRST_CELL = True
+IGNORE_FILES = [".ipynb_checkpoints"]
 PELICAN_COMMENT_SYSTEM = True
 
 AUTHOR = u'Vincent Alexander Croft'
